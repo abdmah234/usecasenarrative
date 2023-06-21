@@ -1,0 +1,40 @@
+class Permit:
+    def __init__(self, permit_number, category):
+        self.permit_number = permit_number
+        self.category = category
+
+    def print_permit_created(self):
+        print("Permit has been successfully created.")
+
+
+class PermitNumberValidator:
+    @staticmethod
+    def validate_permit_number(permit_number):
+        # Implement permit number validation logic
+        # Return True if valid, False otherwise
+        pass
+
+
+class PermitCategorySelector:
+    @staticmethod
+    def select_category():
+        categories = ["Category 1", "Category 2", "Category 3"]
+        for index, category in enumerate(categories):
+            print(f"{index + 1}. {category}")
+
+        category_index = int(input("Enter the category number: "))
+        selected_category = categories[category_index - 1]
+        return selected_category
+
+
+class PermitCreator:
+    @staticmethod
+    def create_permit():
+        permit_number = input("Enter the permit number: ")
+        is_valid_permit = PermitNumberValidator.validate_permit_number(permit_number)
+
+        if is_valid_permit:
+            selected_category = PermitCategorySelector.select_category()
+            permit = Permit(permit_number, selected_category)
+            permit.print_permit_created()
+       
